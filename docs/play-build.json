@@ -1,0 +1,79 @@
+{
+  "schema": "atlas.play-build.v1",
+  "name": "星屿合成",
+  "engine": "Cocos Creator 3.8.8",
+  "stage": "prototype",
+  "built_at_utc": "2026-10-16T06:18:30.610413+00:00",
+  "build_wall_seconds": 25.158,
+  "manifest_sha256": "2c39bede34283d2d2abfb6563484dc8ab0b4bbbb1c3444c894835681253b8555",
+  "source_zip_sha256": "db1dd13599357014a444d2684ceaa97c6ccd1ae226298b68817a9a64c6156b62",
+  "validation_summary": "9 项逻辑测试、真实点击胜负结算与重开、手机触摸通过",
+  "validation": {
+    "logic_tests_passed": 9,
+    "browser_sessions": [
+      {
+        "kind": "default",
+        "config": {
+          "title": "星屿合成",
+          "theme": "orbit",
+          "moves": 40,
+          "goal": 256
+        },
+        "status": "won",
+        "accepted_clicks": 36,
+        "terminal_input_blocked": true,
+        "restart_passed": true
+      },
+      {
+        "kind": "win",
+        "config": {
+          "title": "微光花园",
+          "theme": "garden",
+          "moves": 80,
+          "goal": 64
+        },
+        "status": "won",
+        "accepted_clicks": 14,
+        "terminal_input_blocked": true,
+        "restart_passed": true
+      },
+      {
+        "kind": "loss",
+        "config": {
+          "title": "星屿合成",
+          "theme": "orbit",
+          "moves": 15,
+          "goal": 512
+        },
+        "status": "lost",
+        "accepted_clicks": 15,
+        "terminal_input_blocked": true,
+        "restart_passed": true
+      }
+    ],
+    "mobile_touch_passed": true,
+    "javascript_errors": 0,
+    "scope": "Specific baseline runs, not blanket approval for every parameter combination.",
+    "engine_hard_checks_passed": 5,
+    "engine_hard_checks_total": 5,
+    "known_limitations": [
+      "Headless WebGL pixel-readback soft warning; final rendered screenshots visually checked.",
+      "Observed headless FPS approximately 28; no 60 FPS or low-end device performance claim."
+    ]
+  },
+  "capabilities": {
+    "parameterized_template": true,
+    "free_text_code_generation": false,
+    "cloud_build_jobs": false,
+    "model_api_called_by_site": false
+  },
+  "cost": {
+    "recording_started_at_utc": "2026-10-16T06:00:33.954927+00:00",
+    "snapshot_at_utc": "2026-10-16T06:20:55.726736+00:00",
+    "recorded_execution_wall_seconds_to_snapshot": 1221.771809,
+    "additional_purchases_cny": 0,
+    "total_cost_cny": null,
+    "human_active_hours": null,
+    "note": "This measured interval excludes initial capability audit and later deployment/readback. Execution wall time is not human work time; missing costs remain unknown."
+  }
+}

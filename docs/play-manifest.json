@@ -1,0 +1,346 @@
+{
+  "schema": "atlas.original-artifacts.v1",
+  "scope": "Original Cocos prototype and licensed runtime; excludes competitor game source and assets.",
+  "files": [
+    {
+      "path": "play/LICENSE",
+      "bytes": 1073,
+      "sha256": "cc5e2b5fd5c2a60400892c52b83ba4ab09b6beddbd7ddf0fcf62370cc9090625"
+    },
+    {
+      "path": "play/application.js",
+      "bytes": 3302,
+      "sha256": "359f85dd922e2568aa991af95a5c356a0102042c8918252987bfbd37f2153eb2"
+    },
+    {
+      "path": "play/assets/internal/config.json",
+      "bytes": 3300,
+      "sha256": "ff88718cf539b399cfe8ea9d19ee8eafcebe3f76ffa7436fb56ce8ce6968418d"
+    },
+    {
+      "path": "play/assets/internal/import/07/07d3aae9f.json",
+      "bytes": 1077339,
+      "sha256": "fd4adf4e462f16d0df32f3c86eb43e0b1a14f81e9a104e1b204ef99d6ba7198b"
+    },
+    {
+      "path": "play/assets/internal/index.js",
+      "bytes": 45110,
+      "sha256": "19bd675acfdd6f12d4bfec92fa4fa354b57c1dee7256325dce20ebfc5657b58c"
+    },
+    {
+      "path": "play/assets/main/config.json",
+      "bytes": 581,
+      "sha256": "67ec5f933104edbbb0dce7270ec89940b425758d4ff87a3c12375f00b30e2004"
+    },
+    {
+      "path": "play/assets/main/import/ef/ef6a50fb-2d04-4c32-bafd-88c228e870a9.json",
+      "bytes": 877,
+      "sha256": "0199df6b451472d9ee253c6db1e94a892c9c4a7393350e74ac5134d297b2be29"
+    },
+    {
+      "path": "play/assets/main/import/fd/fd8ec536-a354-4a17-9c74-4f3883c378c8.json",
+      "bytes": 480,
+      "sha256": "c2eee4552a460ed97591f527e127b95c811d5f796b9448f3f705974af9beba9d"
+    },
+    {
+      "path": "play/assets/main/index.js",
+      "bytes": 11920,
+      "sha256": "b4abfadf0a938d0d0d740e483e9ce27fcfb0f9aff6082932623135afaa00395f"
+    },
+    {
+      "path": "play/cocos-js/_virtual_cc-CArsJ5Rl.js",
+      "bytes": 3133775,
+      "sha256": "55f1f19c19e13910f5a325a69bd9948b2d540e1db6e5ef89b258abb283584c7a"
+    },
+    {
+      "path": "play/cocos-js/assets/bullet.release.wasm-BIzkn7bF.wasm",
+      "bytes": 469455,
+      "sha256": "effe0a64dfd4fc1128ac1c51f4418a5a04509a7595df05ea52f5077b7057d56d"
+    },
+    {
+      "path": "play/cocos-js/assets/spine-CC34fKUR.wasm",
+      "bytes": 205175,
+      "sha256": "b3d705bd391da35dcf0980c1d8c526f609ad64ac12652dd8c0bf3b20a626f2f2"
+    },
+    {
+      "path": "play/cocos-js/assets/spine.js.mem-pbmhlDdv.bin",
+      "bytes": 19998,
+      "sha256": "7a22a12630af3de76efe992d68fdcc25f072d663ccb569d7369cbe2d91e8147e"
+    },
+    {
+      "path": "play/cocos-js/bullet.release.asm-D_68nJYa.js",
+      "bytes": 940787,
+      "sha256": "67af50e3e28c3cd9d213d9439e128e3ae5afdf9281e91f5662e34f983be8873e"
+    },
+    {
+      "path": "play/cocos-js/bullet.release.wasm-BOgvux-R.js",
+      "bytes": 26899,
+      "sha256": "cbb2d356d5d039d76e9c5ad69c737eb271d263921ae16b0dfc0ab8b8a6bd2d4f"
+    },
+    {
+      "path": "play/cocos-js/bullet.release.wasm-mT4aJDLq.js",
+      "bytes": 133,
+      "sha256": "19dfc1aea6378e50b8b6fd40d9a3cf58769aa9f241c44085e5fa0877776ff242"
+    },
+    {
+      "path": "play/cocos-js/cc.js",
+      "bytes": 10675,
+      "sha256": "eeb88689329fcc775f68f2dd17728826863a264bd43d395be8d7c53af260a611"
+    },
+    {
+      "path": "play/cocos-js/spine-BGFFnNyc.js",
+      "bytes": 119,
+      "sha256": "df3e7ef18435df7ceea12c8c235d1cef37fc9c6cb9ab6a3b4bc735c7d134c7f6"
+    },
+    {
+      "path": "play/cocos-js/spine.asm-BCCB8IGt.js",
+      "bytes": 362717,
+      "sha256": "d2f9198f41d75218ae88e4f256987dabac2abb6b4988280ee2e57314c38ee4de"
+    },
+    {
+      "path": "play/cocos-js/spine.js-CPHn08RU.js",
+      "bytes": 125,
+      "sha256": "b9c5485f282af04d7848ca17b78e421128de8d215e9698ba8bf1a18cccc8bf0d"
+    },
+    {
+      "path": "play/cocos-js/spine.wasm-D2KkhhGP.js",
+      "bytes": 22167,
+      "sha256": "7093987b06fd6c5056f6fbf6a0ce3745f29d88d77e730eee59eb90d5ad8dffa5"
+    },
+    {
+      "path": "play/index.html",
+      "bytes": 2093,
+      "sha256": "4b9779276dd317fc427dd34fc10c5f9ff9cff3b5cda1883007ff69d20648f8f9"
+    },
+    {
+      "path": "play/index.js",
+      "bytes": 818,
+      "sha256": "4317cb547b4d105f69346b925d961df7f951002fd5a4aaae807a361aa1ad49cd"
+    },
+    {
+      "path": "play/licenses/Cocos-Engine-LICENSE.md",
+      "bytes": 1164,
+      "sha256": "e8799a9198184e8cc31e45e66521b1cca52f9099a932de7a56abb9d212311318"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/EDITOR_license_and_terms_en.txt",
+      "bytes": 27524,
+      "sha256": "2bb0a709b8022436c9101d31f62cded7ced46c57277d19dd61cbaec5e2c6ec69"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/EDITOR_license_and_terms_zh.txt",
+      "bytes": 25517,
+      "sha256": "a04a2e0155394ee6773e0af791818f23709673d02808235d5c385fe71dcbbef9"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_DragonBones.txt",
+      "bytes": 1111,
+      "sha256": "e055124edff26897970ce0437c48316c1007e88d3ffc4e1a4360f95b309949a4"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_FreeType.txt",
+      "bytes": 6743,
+      "sha256": "08c135755dd589039470f1fdbb400daaabaaa50d0b366d19cebff4d22986baa1"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_OpenSans.txt",
+      "bytes": 11349,
+      "sha256": "9b9616da83ecff6ecfa914a7d2aa47107091b6c911b652fe5d2b03b93f01fd6d"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_SocketRocket.txt",
+      "bytes": 1532,
+      "sha256": "41c74b84758ab303b091b0afbf958de909559556c8f1591dc4d687ea184356ab"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_android_game_sdk.txt",
+      "bytes": 11952,
+      "sha256": "00f7f4e6f379ec182639009fb3f5e84e683a0f0357c3ec67a89732a77ec15397"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_cocosdenshion.txt",
+      "bytes": 1106,
+      "sha256": "729506543f408f5176db96e2a2dceebeb0f3d2b4be6a58e643b40f197aec9c88"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_curl.txt",
+      "bytes": 1047,
+      "sha256": "e3c3db89170ba0e2fb668a4358ed7a8e00a721435dd85e4b322df732c6d3c51a"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_glslang.txt",
+      "bytes": 55719,
+      "sha256": "373bb541d74f5a2854e4b752c57952dd8155cca535124176de90c94efc67ef85"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_gperftools",
+      "bytes": 1479,
+      "sha256": "81ebf38708899097aacaac9723679b3ffa17640c14cd3193c46b75197de18b2c"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_libjpeg.txt",
+      "bytes": 2224,
+      "sha256": "32b2be1e56767c1257fb2393514d0b457c49e0efb5b596734a114b55b54ff1f2"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_libpng.txt",
+      "bytes": 4194,
+      "sha256": "3360bd99cc4cccd84009a0d9a0fbba84ea39f9d291e9215b4bf32d1e587fd68e"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_libwebp.txt",
+      "bytes": 2967,
+      "sha256": "54f14a72cd8673886ec5f032706696ea94f8a51fb572288f0b6ea6cd73a62352"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_libwebsockets.txt",
+      "bytes": 27652,
+      "sha256": "1f16192cd61595919080fb4e7f705d7678d92260c8d36572e2a31a93188dea84"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_libxml2.txt",
+      "bytes": 1498,
+      "sha256": "013556ff1aa847ac0e365337321c200eee1c69051db8870db37002c852a4e98d"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_llvm.txt",
+      "bytes": 1935,
+      "sha256": "0d69fe9e3816b328f9cba72481a7b7c72ac7d46ea677974d017b22bef0ea77ff"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_meshoptimizer.md",
+      "bytes": 1079,
+      "sha256": "af0399f6fe106205872fd58c25f5a33fdefd34754b6d96d3f6b4307eb17d05ed"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_mpg123.txt",
+      "bytes": 41490,
+      "sha256": "87ee627638ad10e7f5de51b603b4b3270d9f0981f444ff19a1054e4284474b34"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_notepack.io.txt",
+      "bytes": 1067,
+      "sha256": "818e9985b230abd1ed686e2918e9cd6ab68a42a2850fc1884b7fde3e8301fff3"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_ogg_vorbis.txt",
+      "bytes": 1470,
+      "sha256": "414bfd5d8ee64395a9231d6386188461500052c10915bee08b18bfa9489dd0b3"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_openal-soft.txt",
+      "bytes": 23330,
+      "sha256": "d808ce217e5b611854da622b57ec29fe545584c48bc5352fae72a4b6e5074a15"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_openssl.txt",
+      "bytes": 10350,
+      "sha256": "358701db62c062afc39e0aed4f6641604e426cb61d12ab01c2913f92ce0fbb01"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_physx.txt",
+      "bytes": 1533,
+      "sha256": "c6e619ab251f4da4267b79e2055db883ba731d477fa97ae6642d673166bce6a7"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_sdl2.txt",
+      "bytes": 884,
+      "sha256": "52d41d0c82507721ca1fd92c20dc2bf9ca531b3a288ef845a8275c550f118804"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_simdutf.txt",
+      "bytes": 1058,
+      "sha256": "ac630cbb3ab44d8f6a26281669cfd9f405140a0ef62da8cc3a2898a0ea36fe32"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_spine.txt",
+      "bytes": 1455,
+      "sha256": "8f9c3dbc5bbb98eb042bfe6f9e8e4c0fab32eb256b2767bd4fc7f87d27f60619"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_sqlite.md",
+      "bytes": 263,
+      "sha256": "9c6479123f32a1ed50d9a0af203dfe8972e65035b0cdeef436b5f8d0924517fe"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_tbb.txt",
+      "bytes": 11556,
+      "sha256": "5ad8c213095c573921d7388edf93f6a9f54490b8ebf3b165ae8ef1947cf70846"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_tcmalloc.txt",
+      "bytes": 11560,
+      "sha256": "97ff8072159bab7bab421a3fef321a413d6e0c73ee081b0c89da1e3c1f4ef518"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_unicode.txt",
+      "bytes": 3606,
+      "sha256": "84085add78d1862d355da28cfb9b3f04f72e307aff1b6da7f3e9734e5c2ddc0d"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_v8.txt",
+      "bytes": 3161,
+      "sha256": "f10a1808e442ae7dbfecf6b54ae4de84193a768770e189a67d5f397730acdbc9"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_zlib.txt",
+      "bytes": 904,
+      "sha256": "f9a5705ed10643605bb82dd985a035d44034969328655091031f78c073a4569c"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/LICENSE_zlibjs.txt",
+      "bytes": 1221,
+      "sha256": "5c7d872da6de342a4c3bdd1cd7d9bbb048863693a3a5eec89f45ba85aae535e5"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/SPINE_license.txt",
+      "bytes": 1844,
+      "sha256": "654c1199229ed326c93a3734e47b3aa2b60431c39eec121d4b5dfc129859800e"
+    },
+    {
+      "path": "play/licenses/cocos-third-party/zlib.js_license.txt",
+      "bytes": 1222,
+      "sha256": "131afe3f7bdce1698beb292fb8de1a968de01bce876122a60ef5db230471c866"
+    },
+    {
+      "path": "play/src/chunks/bundle.js",
+      "bytes": 3082,
+      "sha256": "f3d7012f1ac7d4cc57a1aa570bfd51c2abfc8861c6cbd784370c85d35f0eaa82"
+    },
+    {
+      "path": "play/src/effect.bin",
+      "bytes": 5755,
+      "sha256": "b0d92f8307e3109abe8af8a863d68feb58cf4f49cf000b1d48fbb3dc3ad45556"
+    },
+    {
+      "path": "play/src/import-map.json",
+      "bytes": 40,
+      "sha256": "2be73d8f2e7e1d814627714ace691b6e1a9d445c779426a224e7f3685f0fa278"
+    },
+    {
+      "path": "play/src/polyfills.bundle.js",
+      "bytes": 14750,
+      "sha256": "f1e4ced3322168d6b9915e782e4c1cf1055d75f66f2b38e7fcd60f48cf89082b"
+    },
+    {
+      "path": "play/src/settings.json",
+      "bytes": 21862,
+      "sha256": "5b3f199a8590271afadd18f64ed9f77818319182ece73911a761edff2dd737b1"
+    },
+    {
+      "path": "play/src/system.bundle.js",
+      "bytes": 12259,
+      "sha256": "90f192f3b04f7fcb5bba9c15745cdd1a798d9b855f752c5ee7e48bb526dd543d"
+    },
+    {
+      "path": "play/style.css",
+      "bytes": 1222,
+      "sha256": "338fc9d734af60103e6d303333e28b413f477b295fd7dd233dc7022320c56e48"
+    },
+    {
+      "path": "play-source.zip",
+      "bytes": 150715,
+      "sha256": "db1dd13599357014a444d2684ceaa97c6ccd1ae226298b68817a9a64c6156b62"
+    }
+  ]
+}

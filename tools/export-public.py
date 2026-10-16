@@ -10,12 +10,13 @@ from pathlib import Path
 import re
 import shutil
 import struct
+import zipfile
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-COPY_FILES = ('index.html', 'styles.css', 'core.js', 'app.js', 'data.json')
+COPY_FILES = ('index.html', 'styles.css', 'core.js', 'app.js', 'data.json', 'studio-core.js', 'studio.js', 'studio.css', 'play-build.json', 'play-manifest.json')
 DOC_FILES = set(COPY_FILES) | {'about.html', '.nojekyll'}
-REPO_FILES = {f'docs/{n}' for n in DOC_FILES} | {'README.md', '.gitignore', 'tools/export-public.py', 'tests/test-core.cjs'}
+REPO_FILES = {f'docs/{n}' for n in DOC_FILES} | {'README.md', '.gitignore', 'tools/export-public.py', 'tests/test-core.cjs', 'tests/test-studio.cjs'}
 MEDIA_FILES = {f'media/g01/{name}.png' for name in ('drop','merge','score','failure','settlement','restart','ready','restart-drop')} | {'media/g01/continuous.webm'}
 DATA_KEYS = {'schema_version','generated_at','batch_id','registered_date','disclosure','samples','dimensions','status_definitions','observations','evidence','comparison','cost','cost_phase2','version_linkage','bias','tasks','phase2','phase3','cost_phase3','phase5','runtime_delivery','cost_phase5'}
 FORBIDDEN_KEYS = {'source_code','raw_source','excerpt','cookie','cookies','oauth','access_token','refresh_token','password','secret','api_key','raw_bundle','source_map'}
@@ -84,10 +85,29 @@ def check_media(path, name, expected):
     return {'path':name, 'bytes':len(raw), 'sha256':digest}
 
 
+def original_manifest(folder):
+    manifest = json.loads((folder / 'play-manifest.json').read_text())
+    assert manifest['schema'] == 'atlas.original-artifacts.v1'
+    found = {}
+    for item in manifest['files']:
+        name = item['path']
+        assert name == 'play-source.zip' or name.startswith('play/'), f'Unapproved original artifact: {name}'
+        assert not Path(name).is_absolute() and '..' not in Path(name).parts and '\\' not in name
+        assert name not in found, f'Duplicate original artifact: {name}'
+        path = folder / name
+        assert path.is_file() and not path.is_symlink()
+        raw = path.read_bytes()
+        assert 0 < len(raw) <= 16 * 1024 * 1024 and len(raw) == item['bytes']
+        assert hashlib.sha256(raw).hexdigest() == item['sha256'], f'Original artifact hash mismatch: {name}'
+        found[name] = item
+    assert 'play/index.html' in found and 'play-source.zip' in found
+    return found
+
 def validate():
     data = json.loads((ROOT / 'docs/data.json').read_text())
     media = media_manifest(data)
-    expected_files = REPO_FILES | {f'docs/{name}' for name in media}
+    originals = original_manifest(ROOT / 'docs')
+    expected_files = REPO_FILES | {f'docs/{name}' for name in media} | {f'docs/{name}' for name in originals}
     files = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.relative_to(ROOT).parts}
     assert files == expected_files, f'Unexpected or missing files: {files ^ expected_files}'
     # Scan every published repository file, including documentation, tests and exporter.
@@ -99,7 +119,25 @@ def validate():
         if name.removeprefix('docs/') in media:
             check_media(path, name.removeprefix('docs/'), media[name.removeprefix('docs/')])
             continue
-        content = path.read_text(encoding='utf-8')
+        if name == 'docs/play-source.zip':
+            with zipfile.ZipFile(path) as archive:
+                for member in archive.infolist():
+                    assert not Path(member.filename).is_absolute() and '..' not in Path(member.filename).parts
+                    if member.is_dir():
+                        continue
+                    raw = archive.read(member)
+                    try:
+                        content = raw.decode('utf-8')
+                    except UnicodeDecodeError:
+                        continue
+                    for pattern in patterns:
+                        assert not re.search(pattern, content, re.I), f'Sensitive source archive member: {member.filename}'
+            continue
+        try:
+            content = path.read_text(encoding='utf-8')
+        except UnicodeDecodeError:
+            assert name.removeprefix('docs/') in originals, f'Unapproved binary: {name}'
+            continue
         for pattern in patterns:
             assert not re.search(pattern, content, re.I), f'Sensitive pattern in {name}: {pattern}'
     docs = ROOT / 'docs'
@@ -123,7 +161,7 @@ def validate():
     assert sum(len(d['fields']) for d in data['dimensions']) == 96
     counts = Counter(o['status'] for o in data['observations'])
     findings = data['phase2']['version_summary']['version_findings']
-    return {'samples':len(ids), 'fields_per_sample':96, 'observation_status_counts':dict(counts), 'version_modules':{'same':findings['equal_modules'],'changed':findings['changed_existing_modules'],'new':len(findings['new_modules'])},'verified_gameplay_cycles':data['phase2']['runtime_summary']['verified_gameplay_cycles'],'phase3_acceptance':{'verified_steps':data['phase3']['verified_step_count'],'required_steps':data['phase3']['required_step_count'],'full_delivery_accepted':data['phase3']['full_delivery_accepted'],'actual_loaded_response_sha256':data['phase3']['version_gate']['actual_loaded_response_sha256']},'approved_media_count':len(media),'phase5_core_loop_accepted':(phase5_payload(data) or {}).get('core_loop_delivery_accepted'),'files':[{'path':n,'bytes':(ROOT/n).stat().st_size,'sha256':hashlib.sha256((ROOT/n).read_bytes()).hexdigest()} for n in sorted(files)],'checks':['exact repository file allowlist','no symlinks in any public repository file','local links resolve','all public text files scanned for personal username, private identifiers and credential patterns','approved binary media headers, sizes and SHA-256 match phase-five descriptors','derived-data schema and forbidden-field scan','no embedded game source or raw bundles','sample and field count checks']}
+    return {'samples':len(ids), 'fields_per_sample':96, 'observation_status_counts':dict(counts), 'version_modules':{'same':findings['equal_modules'],'changed':findings['changed_existing_modules'],'new':len(findings['new_modules'])},'verified_gameplay_cycles':data['phase2']['runtime_summary']['verified_gameplay_cycles'],'phase3_acceptance':{'verified_steps':data['phase3']['verified_step_count'],'required_steps':data['phase3']['required_step_count'],'full_delivery_accepted':data['phase3']['full_delivery_accepted'],'actual_loaded_response_sha256':data['phase3']['version_gate']['actual_loaded_response_sha256']},'approved_media_count':len(media),'phase5_core_loop_accepted':(phase5_payload(data) or {}).get('core_loop_delivery_accepted'),'files':[{'path':n,'bytes':(ROOT/n).stat().st_size,'sha256':hashlib.sha256((ROOT/n).read_bytes()).hexdigest()} for n in sorted(files)],'checks':['exact repository file allowlist','no symlinks in any public repository file','local links resolve','all public text files scanned for personal username, private identifiers and credential patterns','approved binary media headers, sizes and SHA-256 match phase-five descriptors','derived-data schema and forbidden-field scan','no competitor game source or raw bundles in research data; original prototype independently manifested','sample and field count checks']}
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -135,6 +173,7 @@ def main():
         source = args.source.resolve()
         source_data = json.loads((source / 'data.json').read_text())
         media = media_manifest(source_data)
+        originals = original_manifest(source)
         # Verify all approved binary sources before copying any file. No recursive copy.
         for name, descriptor in media.items():
             check_media(source / name, name, descriptor)
@@ -150,8 +189,12 @@ def main():
             destination = ROOT / 'docs' / name
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source / name, destination)
+        for name in sorted(originals):
+            destination = ROOT / 'docs' / name
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source / name, destination)
     report = validate()
-    report.update({'started_at_utc':started,'completed_at_utc':datetime.now(timezone.utc).isoformat(),'scope':'Public static snapshot export and local verification; publishing is handled separately.','source':'site/dist','third_party_raw_assets_copied':False,'approved_research_capture_media_only':True})
+    report.update({'started_at_utc':started,'completed_at_utc':datetime.now(timezone.utc).isoformat(),'scope':'Public static snapshot export and local verification; publishing is handled separately.','source':'site/dist','third_party_raw_assets_copied':False,'research_capture_media_allowlist_enforced':True,'original_prototype_manifest_enforced':True})
     if args.audit:
         assert ROOT not in args.audit.resolve().parents, 'Audit must remain outside public repository'
         args.audit.write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')
